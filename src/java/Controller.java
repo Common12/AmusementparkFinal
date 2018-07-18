@@ -131,7 +131,11 @@ HttpServletRequest servletRequest=null;
     }
 
     public String validateUser(){
-      
+       if(user.getUsername().equals("admin") && user.getPassword().equals("admin")){
+            parkList = ParkDao.getParkList();
+            System.out.println("============================="+parkList);
+            return "admin";
+        }else{
         boolean userValid = UserDao.isUserValid(user);
             if(userValid){
                 
@@ -144,6 +148,7 @@ HttpServletRequest servletRequest=null;
       
     }
        
+    }
     }
     
     public String parkRecord(){
@@ -170,6 +175,32 @@ HttpServletRequest servletRequest=null;
     //   UserDao.autoLoad(user);
     //    return SUCCESS;
     //}
-   
+   public String edit(){
+        
+    
+   ActionContext context = ActionContext.getContext();
+        HttpServletRequest request= (HttpServletRequest)context.get(ServletActionContext.HTTP_REQUEST);
+    int id = Integer.parseInt(request.getParameter("id"));
+       park=  ParkDao.getParkRecord(id);
+       
+        return SUCCESS;
+    }
+    
+ public String update(){
+ 
+       ParkDao.updateRecord(park);
+        return SUCCESS;
+    }
+ 
+  public String delete(){
+        
+    ActionContext context = ActionContext.getContext();
+        HttpServletRequest request= (HttpServletRequest)context.get(ServletActionContext.HTTP_REQUEST);
+    int id = Integer.parseInt(request.getParameter("id"));
+        ParkDao.deleteRecord(id);
+        parkList = ParkDao.getParkList();
+         
+        return SUCCESS;
+    }
 }
  

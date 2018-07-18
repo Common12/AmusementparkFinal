@@ -41,6 +41,9 @@
 					<li>
 						<a href="Registration.jsp">Registration </a>
 					</li>
+                                        <li>
+						<a href="login.jsp">Login</a>
+					</li>
 					<li>
 						<a href="about.html">About</a>
 					</li>

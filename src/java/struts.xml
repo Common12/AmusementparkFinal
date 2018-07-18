@@ -17,6 +17,7 @@
      
         <action name="controller" class="Controller" method="validateUser">  
         <result name="success"> /pay.jsp</result>
+        <result name="admin"> /admin.jsp</result>
     <result name="error"> /error.html</result>
         </action>       
                  <action name="parkDetails" class="Controller" method="parkRecord">  
@@ -24,6 +25,21 @@
         <result name="error"> /error.html</result>
      
          
+        </action>
+        
+         <action name="delete" class="Controller" method="delete">  
+        <result name="success"> /admin.jsp</result>
+        <result name="error"> /error.html</result>
+        </action>
+        
+         <action name="edit" class="Controller" method="edit">  
+        <result name="success">/updateParkRecord.jsp</result>
+        <result name="error"> /error.html</result>
+        </action>
+        
+         <action name="update" class="Controller" method="update">  
+        <result name="success">/admin.jsp</result>
+        <result name="error"> /error.html</result>
         </action>
        
        

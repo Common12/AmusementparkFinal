@@ -56,4 +56,34 @@ public class ParkDao {
          session.save(park);
         session.beginTransaction().commit();
        }
-}
+
+    public static void updateRecord(Park park) {
+    
+            Session session = CommonToolClass.getSession();
+        int id = park.getId(); 
+        Park dbpark=(Park)session.get(Park.class, id);
+        dbpark.setParkname(park.getParkname());
+        dbpark.setLocation(park.getLocation());
+        dbpark.setCity(park.getCity());
+        dbpark.setEmail(park.getEmail());
+        dbpark.setPhone(park.getPhone());
+        dbpark.setCtime(park.getCtime());
+        dbpark.setOtime(park.getOtime());
+        dbpark.setSotime(park.getSotime());
+        dbpark.setSctime(park.getSctime());
+        dbpark.setAfees(park.getAfees());
+        dbpark.setCfees(park.getCfees());
+       session.update(dbpark);
+        session.beginTransaction().commit();
+    }
+
+    public static void deleteRecord(int id) {
+     Session session = CommonToolClass.getSession();
+         Park park=(Park)session.get(Park.class, id);
+    session.delete(park);
+     session.beginTransaction().commit();
+   
+    
+    }
+    
+    }
